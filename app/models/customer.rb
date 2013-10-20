@@ -1,13 +1,14 @@
 class Customer < ActiveRecord::Base
   attr_accessible :name
 
-  has_one :profile, :as => :profilable
+  has_one  :profile, :as => :profilable
   has_many :members, :as => :memberable, :class_name => 'Membership'
   has_many :memberables, :as => :member, :class_name => 'Membership'
   has_many :orders
   has_many :petitions, :as => :provider, :class_name => 'Order'
+  has_one  :waiting_list, :dependent => :destroy
 
-  validates :name, :presence => true
+  validates :name, presence: true
 
   def member_list
     members = []

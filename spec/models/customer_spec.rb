@@ -16,6 +16,7 @@ describe Customer do
     it { should have_many(:members) }
     it { should have_many(:memberables) }
     it { should have_many(:petitions) }
+    it { should have_one(:waiting_list).dependent(:destroy) }
   end
 
   describe "member_list" do

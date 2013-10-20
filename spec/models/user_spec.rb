@@ -16,6 +16,8 @@ describe User do
   describe "Associations" do
     it { should have_one(:profile) }
     it { should have_many(:memberships) }
+    it { should have_many(:waiting_users).dependent(:destroy) }
+    it { should have_many(:waiting_lists).through(:waiting_users) }
   end
 
 end
